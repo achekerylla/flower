@@ -29,4 +29,5 @@ class CifarClient(fl.client.NumPyClient):
 
 
 # Start Flower client
-fl.client.start_numpy_client("[::]:8080", client=CifarClient())
+address = "0.0.0.0:8080"  # achekerylla: Use IPv4
+fl.client.start_numpy_client(address, client=CifarClient())

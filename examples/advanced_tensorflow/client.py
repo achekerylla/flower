@@ -83,7 +83,8 @@ def main() -> None:
 
     # Start Flower client
     client = CifarClient(model, x_train, y_train, x_test, y_test)
-    fl.client.start_numpy_client("[::]:8080", client=client)
+    address = "0.0.0.0:8080"  # achekerylla: Use IPv4
+    fl.client.start_numpy_client(address, client=client)
 
 
 def load_partition(idx: int):
