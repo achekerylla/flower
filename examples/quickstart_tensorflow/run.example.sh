@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# achekerylla: debug statements
+python3 -c "import tensorflow as tf; print(tf.__version__)"
+
 # achekerylla: Download the datasets before starting the clients to avoid the
 # case where multiple clients try downloading during execution and fail due to
 # resource contention conflict in the Keras cache (at ~/.keras).
