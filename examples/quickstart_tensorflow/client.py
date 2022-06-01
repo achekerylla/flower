@@ -7,7 +7,7 @@ import tensorflow as tf
 # Make TensorFlow log less verbose
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
-# achekerylla: RFV get server address (default IPv6 unspec addr)
+# achekerylla: RFV get server address (default IPv6 unspec addr at port 8080)
 SERVER_ADDRESS = os.environ.get("EXAMPLE_SERVER_ADDRESS", "[::]:8080")
 
 # achekerylla: RFV get steps per epoch (default none)

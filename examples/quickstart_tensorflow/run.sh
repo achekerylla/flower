@@ -9,8 +9,9 @@ python3 -c "import tensorflow as tf; print(tf.__version__)"
 echo "Download Datasets"
 python -c "import tensorflow as tf; tf.keras.datasets.cifar10.load_data()"
 
-# achekerylla: RFV set server address (default IPv6 unspec addr)
-export EXAMPLE_SERVER_ADDRESS="[::]:8080"  # IPv6 unspec addr
+# achekerylla: RFV set server address (default IPv6 unspec addr at port 8080)
+# export EXAMPLE_SERVER_ADDRESS="[::]:8080"  # IPv6 unspec addr at port 8080
+export EXAMPLE_SERVER_ADDRESS="[::]:21337"  # IPv6 unspec addr at port 21337
 # export EXAMPLE_SERVER_ADDRESS="0.0.0.0:8080"  # IPv4
 
 # achekerylla: RFV set steps per epoch (default none)

@@ -1,7 +1,7 @@
 import flwr as fl
 import os
 
-# achekerylla: RFV get server address (default IPv6 unspec addr)
+# achekerylla: RFV get server address (default IPv6 unspec addr at port 8080)
 SERVER_ADDRESS = os.environ.get("EXAMPLE_SERVER_ADDRESS", "[::]:8080")
 
 
