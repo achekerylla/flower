@@ -1,9 +1,9 @@
 import flwr as fl
 import os
 
-# achekerylla: RFV get server address (default IPv6 unspec addr at port 8080)
+# (Optional) Set EXAMPLE_SERVER_ADDRESS in your environment to override the
+# default value if `[::]:8080` is not available on your system.
 SERVER_ADDRESS = os.environ.get("EXAMPLE_SERVER_ADDRESS", "[::]:8080")
-
 
 # Start Flower server
 fl.server.start_server(

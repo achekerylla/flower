@@ -3,15 +3,12 @@ import os
 import flwr as fl
 import tensorflow as tf
 
+# (Optional) Set EXAMPLE_SERVER_ADDRESS in your environment to override the
+# default value if `[::]:8080` is not available on your system.
+SERVER_ADDRESS = os.environ.get("EXAMPLE_SERVER_ADDRESS", "[::]:8080")
 
 # Make TensorFlow log less verbose
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-
-# achekerylla: RFV get server address (default IPv6 unspec addr at port 8080)
-SERVER_ADDRESS = os.environ.get("EXAMPLE_SERVER_ADDRESS", "[::]:8080")
-
-# achekerylla: RFV get steps per epoch (default none)
-STEPS_PER_EPOCH = os.environ.get("EXAMPLE_STEPS_PER_EPOCH", None)
 
 # Load model and data (MobileNetV2, CIFAR-10)
 model = tf.keras.applications.MobileNetV2((32, 32, 3), classes=10, weights=None)
@@ -25,7 +22,7 @@ class CifarClient(fl.client.NumPyClient):
 
     def fit(self, parameters, config):
         model.set_weights(parameters)
-        model.fit(x_train, y_train, epochs=1, batch_size=32, steps_per_epoch=STEPS_PER_EPOCH)
+        model.fit(x_train, y_train, epochs=1, batch_size=32)
         return model.get_weights(), len(x_train), {}
 
     def evaluate(self, parameters, config):
