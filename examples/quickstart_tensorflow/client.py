@@ -7,6 +7,10 @@ import tensorflow as tf
 # default value if `[::]:8080` is not available on your system.
 SERVER_ADDRESS = os.environ.get("EXAMPLE_SERVER_ADDRESS", "[::]:8080")
 
+# (Optional) Set EXAMPLE_STEPS_PER_EPOCH in your environment to override the
+# default value if you do not need to run the full training.
+EXAMPLE_STEPS_PER_EPOCH = os.environ.get("EXAMPLE_STEPS_PER_EPOCH", None)
+
 # Make TensorFlow log less verbose
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
@@ -22,7 +26,7 @@ class CifarClient(fl.client.NumPyClient):
 
     def fit(self, parameters, config):
         model.set_weights(parameters)
-        model.fit(x_train, y_train, epochs=1, batch_size=32)
+        model.fit(x_train, y_train, epochs=1, batch_size=32, steps_per_epoch=EXAMPLE_STEPS_PER_EPOCH)
         return model.get_weights(), len(x_train), {}
 
     def evaluate(self, parameters, config):
