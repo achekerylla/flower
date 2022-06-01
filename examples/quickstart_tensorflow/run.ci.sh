@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# achekerylla: WIP reflect ci usage
+
 python -c "import tensorflow as tf; tf.keras.datasets.cifar10.load_data()"
 
 python server.py &

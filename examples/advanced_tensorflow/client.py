@@ -9,7 +9,6 @@ import flwr as fl
 # Make TensorFlow logs less verbose
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
-
 # Define Flower client
 class CifarClient(fl.client.NumPyClient):
     def __init__(self, model, x_train, y_train, x_test, y_test):
@@ -83,8 +82,7 @@ def main() -> None:
 
     # Start Flower client
     client = CifarClient(model, x_train, y_train, x_test, y_test)
-    address = "0.0.0.0:8080"  # achekerylla: Use IPv4
-    fl.client.start_numpy_client(address, client=client)
+    fl.client.start_numpy_client("0.0.0.0:8080", client=client)
 
 
 def load_partition(idx: int):
