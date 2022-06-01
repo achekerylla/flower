@@ -10,6 +10,8 @@ SERVER_ADDRESS = os.environ.get("EXAMPLE_SERVER_ADDRESS", "[::]:8080")
 # (Optional) Set EXAMPLE_STEPS_PER_EPOCH in your environment to override the
 # default value if you do not need to run the full training.
 EXAMPLE_STEPS_PER_EPOCH = os.environ.get("EXAMPLE_STEPS_PER_EPOCH", None)
+if EXAMPLE_STEPS_PER_EPOCH is not None:
+    EXAMPLE_STEPS_PER_EPOCH = int(EXAMPLE_STEPS_PER_EPOCH)
 
 # Make TensorFlow log less verbose
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
