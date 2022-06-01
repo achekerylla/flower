@@ -139,7 +139,7 @@ jobs:
         run: |
           cd examples/quickstart_tensorflow
           curl -sSL https://install.python-poetry.org | python3 -
-          poetry install && poetry run ./run.sh
+          poetry install -q && poetry run ./run.sh
         env:
           EXAMPLE_STEPS_PER_EPOCH: 3
 
