@@ -125,13 +125,13 @@ jobs:
   test_quickstart_tensorflow_2:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v2
         with:
           python-version: 3.7.12
       - name: Cache Datasets
-        uses: actions/cache@v3
+        uses: actions/cache@v2
         with:
           path: "~/.keras"
           key: keras-datasets
@@ -139,9 +139,7 @@ jobs:
         run: |
           cd examples/quickstart_tensorflow
           curl -sSL https://install.python-poetry.org | python3 -
-          poetry install -q && poetry run ./run.sh
-        env:
-          EXAMPLE_STEPS_PER_EPOCH: 3
+          poetry install -q && EXAMPLE_STEPS_PER_EPOCH=3 poetry run ./run.sh
 
   test_pytorch_from_centralized_to_federated:
     runs-on: ubuntu-20.04
