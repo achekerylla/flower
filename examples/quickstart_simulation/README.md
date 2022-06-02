@@ -42,3 +42,31 @@ If you don't see any errors you're good to go!
 ```bash
 poetry run python3 sim.py
 ```
+
+## Troubleshooting
+
+Before `poetry install`, confirm gcc-5 is in your path.  It is needed for building the `hiredis` extension in the `quickstart_simulation` example.
+
+```bash
+if ! command -v gcc-5 2>/dev/null ; then
+    echo "Warning! gcc-5 not found!"
+    echo "Required for poetry build of hiredis."
+fi
+```
+
+Before `poetry run`, confirm IPv6 is enabled.  It is needed for running Flower.
+
+```bash
+if [ -f /proc/net/if_inet6 ]; then
+    echo "IPv6 kernel support found!"
+else
+    echo "Warning! IPv6 kernel support not found!"
+fi
+if lsmod | grep -qw ipv6; then
+    echo "IPv6 kernel module found!"
+else
+    echo "Warning! IPv6 kernel module not found!"
+fi
+modprobe ipv6 || echo "Error! IPv6 load failed!"
+ping6 -c 1 ::1 || echo "Error! IPv6 ping failed!"
+```

@@ -27,8 +27,9 @@ def main() -> None:
     )
 
     # Start Flower server for four rounds of federated learning
+    address = "0.0.0.0:8080"  # achekerylla: Use IPv4
     fl.server.start_server(
-        server_address="[::]:8080",
+        server_address=address,
         config={"num_rounds": 4},
         strategy=strategy,
     )
